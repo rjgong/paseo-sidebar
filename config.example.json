@@ -1,0 +1,4 @@
+{
+  "notion_token": "REPLACE_WITH_NOTION_TOKEN",
+  "notion_tasks_db": "REPLACE_WITH_NOTION_DATABASE_ID"
+}

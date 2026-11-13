@@ -1,0 +1,7 @@
+{
+  "id": "notion-tasks",
+  "requirements": {
+    "paseo": ">=0.10.0"
+  },
+  "description": "Notion 任务侧栏（移植自 Cursor cursor-tasks）"
+}

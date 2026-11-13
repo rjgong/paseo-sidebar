@@ -1,0 +1,11 @@
+node_modules/
+config.json
+.env
+.env.*
+!.env.example
+*.log
+*.bak
+*.bak-*
+__pycache__/
+*.pyc
+.DS_Store

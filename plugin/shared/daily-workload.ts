@@ -1,0 +1,10 @@
+import { defineRpc } from "@getpaseo/plugin";
+import { z } from "zod";
+export const DIRECTIONS = ["research", "extra", "tools", "reading", "life"] as const;
+export type Direction = typeof DIRECTIONS[number];
+const outcome = z.object({ key: z.string(), direction: z.enum(DIRECTIONS), at: z.string(), title: z.string(), points: z.number().int().min(1).max(5), evidence: z.string() });
+const activity = z.object({ device: z.string(), activity: z.string(), minutes: z.number() });
+const hour = z.object({ hour: z.number(), cells: z.array(z.string().nullable()), assessed: z.boolean(), pending: z.array(z.string()), items: z.array(outcome), activities: z.array(activity) });
+const output = z.object({ date: z.string(), now: z.string(), updatedAt: z.string().nullable(), hours: z.array(hour), warnings: z.array(z.string()) });
+export type DailyWorkload = z.infer<typeof output>;
+export const dailyWorkloadRpc = defineRpc({ name: "tasks.daily-workload", input: z.object({ date: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).optional() }), output });
